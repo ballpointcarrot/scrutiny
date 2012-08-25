@@ -1,7 +1,6 @@
-
 # Module dependencies
 express = require 'express'
-  , routes = require './routes'
+  , routes = require './routes.coffee'
   , http = require 'http'
   , path = require 'path'
   , assets = require 'connect-assets'
@@ -22,7 +21,7 @@ app.configure 'development', ->
   app.use express.errorHandler()
   app.use assets
     build: true
-    compress: true
+    compress: false
     buildDir: false
 
 app.configure 'production', ->
@@ -30,7 +29,9 @@ app.configure 'production', ->
     build: true
     compress: true
 
-app.get '/', routes.index
+# Routes for Scrutiny Server
+routes.build app
 
+# Run the whole shebang!
 http.createServer(app).listen app.get('port'), ->
   console.log "Express server listening on port #{app.get 'port'}"
