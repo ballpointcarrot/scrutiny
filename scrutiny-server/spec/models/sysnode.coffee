@@ -1,7 +1,7 @@
 vows = require 'vows',
   assert= require 'assert',
   mongoose = require 'mongoose',
-  db = require '../config/testdb.coffee'
+  db = require "#{process.env.SCRUTINY_HOME}/config/testdb.coffee"
 
 SysNode = require '../models/sysnode.coffee'
 vows.describe('SysNode objects').addBatch
