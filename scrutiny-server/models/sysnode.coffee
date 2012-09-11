@@ -1,7 +1,13 @@
 mongoose = require 'mongoose'
 
 nodeSchema = mongoose.Schema
-  name: String
+  name: 
+    type: String
+    required: true
   description: String
+  reports: [{type: mongoose.Schema.Types.ObjectId, ref: 'Report' }]
 
-module.exports = mongoose.model("SystemNode", nodeSchema)
+sysnode = mongoose.model("SystemNode", nodeSchema)
+
+
+module.exports = sysnode
