@@ -18,6 +18,7 @@ app.configure ->
   app.use app.router
 
 app.configure 'development', ->
+  db = require './config/testdb.coffee'
   app.use express.errorHandler()
   app.use assets
     build: true

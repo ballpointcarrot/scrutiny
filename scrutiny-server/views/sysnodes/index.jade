@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1= title
+  
+  table
+    tr
+      th Name
+      th Description
+    each node in nodes
+      tr
+        td
+          //-TODO: Set it up so that urls can be generated instead of hard-coded like this (maybe backbone?)
+          a(href='/sysnodes/#{node._id}')= node.name
+        td= node.description
